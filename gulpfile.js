@@ -16,6 +16,10 @@ var
   buildJS      = require('./tasks/build/javascript'),
   buildCSS     = require('./tasks/build/css'),
   buildAssets  = require('./tasks/build/assets'),
+    
+  // custom build for development
+  watchDev = require('./tasks/dev/dev-watch'),
+  buildDev = require('./tasks/dev/dev-build'),
 
   // utility tasks
   clean        = require('./tasks/clean'),
@@ -49,6 +53,9 @@ gulp.task('build', 'Builds all files from source', build);
 gulp.task('build-javascript', 'Builds all javascript from source', buildJS);
 gulp.task('build-css', 'Builds all css from source', buildCSS);
 gulp.task('build-assets', 'Copies all assets from source', buildAssets);
+
+gulp.task("build-dev", "custom build optimize for dev", buildDev);
+gulp.task("watch-dev", "custom build optimize for dev", watchDev);
 
 gulp.task('clean', 'Clean dist folder', clean);
 gulp.task('version', 'Displays current version of Semantic', version);
